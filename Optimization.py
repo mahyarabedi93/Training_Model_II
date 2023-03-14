@@ -69,7 +69,7 @@ cols = st.columns(2,gap='small')
 cols[0].image("https://editor.analyticsvidhya.com/uploads/58182variations_comparison.png")
 cols[1].image("https://www.baeldung.com/wp-content/uploads/sites/4/2022/01/batch-1-1024x670.png")
 ####################################################################################################################################################################
-st.markdown('<p class="font_text"> Lets see how optimization method affect weight calculation for a fake linear dataset with noise.</p>', unsafe_allow_html=True)
+st.markdown('<p class="font_text"> Lets see how optimization method affects weight calculation for a fake linear dataset with noise.</p>', unsafe_allow_html=True)
 ####################################################################################################################################################################
 def GD(X, y, lr, epoch, m, b):  
     log, mse = [], []
@@ -162,7 +162,7 @@ if Gradient_Descent:
     cols1[1].pyplot(Fig)
 ####################################################################################################################################################################
 cols2 = st.columns(2,gap='small')
-Batch_Gradient_Descent = cols2[0].checkbox('Performing Batch Gradient Descent?')
+Batch_Gradient_Descent = cols2[0].checkbox('Performing Mini-Batch Gradient Descent?')
 if Batch_Gradient_Descent:
     Fig,ax=plt.subplots(figsize=(12,10))
     Slope=np.linspace(-10,10,200)#np.round(np.linspace(-0.2,0.2,200),2)
@@ -191,7 +191,7 @@ if Batch_Gradient_Descent:
     log = np.array(log)
     plt.plot(log[:,1],log[:,0],alpha=0.7,color='red')
     plt.scatter(Initial_Intercept,Initial_Slope,s=40,color='yellow')
-    plt.title('Batch Gradient Descent',fontsize=25)
+    plt.title('Mini-Batch Gradient Descent',fontsize=25)
     plt.grid(which='both',axis='both',color='grey', linestyle='--', linewidth=.7)
     cols2[0].pyplot(Fig)
 ####################################################################################################################################################################
