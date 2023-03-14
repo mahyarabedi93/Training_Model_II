@@ -184,7 +184,7 @@ if Batch_Gradient_Descent:
     cbar.set_label(label='Log(MSE)',fontsize=20)
     epoch = cols2[0].slider('Number of epoch BGD:', 200, 200000, value=5000)
     learning_rate = cols2[0].number_input('Learning rate BGD:', min_value=0.0, max_value=0.01,step=0.005, value=0.0001,format='%f')
-    batch_size = cols2[0].slider('Batch Sizen BGD:', 1, len(X), value=10)
+    batch_size = cols2[0].slider('Batch Size BGD:', 1, len(X), value=10)
     Slope_Old = cols2[0].number_input('Initial slope BGD:', min_value=-10, max_value=10,step=1, value=4,format='%i')
     Intercept_Old = cols2[0].number_input('Initial intercept BGD:', min_value=-10, max_value=10,step=1, value=-2,format='%i')
     m, b, log, mse=S_MB_GD(X,y,0.005,epoch,Slope_Old,Intercept_Old,batch_size)
