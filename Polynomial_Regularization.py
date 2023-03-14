@@ -73,7 +73,7 @@ cols[2].image("https://scikit-learn.org/stable/_images/sphx_glr_plot_lasso_lars_
 ####################################################################################################################################################################
 st.markdown('<p class="font_text"> Continuing the last ICA, now we investigate the importance of regularization for fitting a polynomial.</p>', unsafe_allow_html=True)
 ####################################################################################################################################################################
-Dataset_Name = st.sidebar.selectbox('Select your dataset',('Sin(X)', 'X*Sin(X)', 'Sinh(X)', 'Exp(X)', 'X^N'),index = 4)
+Dataset_Name = st.sidebar.selectbox('Select your dataset',('Sin(X)', 'X*Sin(X)', 'Sinh(X)', 'Exp(X)', 'X^0.5'),index = 4)
 np.random.seed(10)
 Data_Numbers = st.sidebar.slider('Size of fake data:', 5, 200, value=30)
 X = np.random.uniform(0, 20,Data_Numbers).reshape(-1,1)
@@ -83,8 +83,10 @@ if Dataset_Name == 'Sin(X)':
 elif Dataset_Name == 'X*Sin(X)':
     y=X*np.sin(X/2)+0.5*Noise
 elif Dataset_Name == 'Sinh(X)':
+    X = np.random.uniform(0, 5,Data_Numbers).reshape(-1,1)
     y=np.sinh(X)+Noise
 elif Dataset_Name == 'Exp(X)':
+    X = np.random.uniform(0, 5,Data_Numbers).reshape(-1,1)
     y=2*np.exp(X)+Noise
 else:
     y=3.6*X**0.5+Noise
@@ -99,6 +101,8 @@ Fig1,ax=plt.subplots(figsize=(12,10))
 plt.scatter(X,y,label='Fake Data')    
 ####################################################################################################################################################################
 X_Lin = np.linspace(0,20,400)
+if Dataset_Name == 'Sinh(X)' or Dataset_Name == 'Exp(X)':
+    X_Lin = np.linspace(0,5,400)
 Linear_Object = linear_model.LinearRegression(fit_intercept=True)
 Linear_Object.fit(X_Train,y)
 Coeff_Lin = Linear_Object.coef_
